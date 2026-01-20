@@ -3,13 +3,6 @@ import random
 
 # Triangular Membership Function
 def get_membership (x, a, b, c):
-    """
-    Calculates triangular membership.
-    x: The input value
-    a: Start of the triangle
-    b: Peak of the triangle 
-    c: End of the triangle
-    """
     # Outside the triangle
     if x <= a or x >= c:
         return 0.0
@@ -61,14 +54,7 @@ water_high   = (40, 60, 60)
 
 # Fuzzy Rules
 def compute_watering_duration(temp, humidity, moisture):
-    """
-    Takes crisp inputs, applies fuzzy rules, 
-    and returns aggregated strengths for High, Medium, and Low watering.
-    """
-    
-    # FUZZIFICATION
     # Calculate membership for Inputs
-    # * operator unpacks the tuples
     
     # Temperature Scores
     t_hot_score     = get_membership(temp, *temp_hot)
@@ -86,7 +72,6 @@ def compute_watering_duration(temp, humidity, moisture):
     s_wet_score     = get_membership(moisture, *soil_wet)
 
     # Rules
-    
     # HIGH WATERING
     # IF Soil is Dry AND (Temp is Hot OR Humidity is Low)
     rule_high_strength = min(s_dry_score, max(t_hot_score, h_low_score))
