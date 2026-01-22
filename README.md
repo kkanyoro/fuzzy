@@ -24,19 +24,19 @@ This repository contains two versions of the system:
 
 The system uses a **Mamdani-style Fuzzy Inference System**:
 
-* **Inputs:**
+**Inputs:**
 * **Temperature (°C):** Mapped to *Optimal* or *Hot*.
 * **Humidity (%):** Mapped to *Low* or *High*.
 * **Soil Moisture (%):** Mapped to *Dry*, *Moist*, or *Wet*.
 
 
-* **Rules:**
+**Rules:**
 * **High Water:** If Soil is Dry **AND** (Temp is Hot **OR** Humidity is Low).
-* **Medium Water:** If Soil is Moist **AND** Temp is Optimal.
-* **Low Water:** If Soil is Wet **OR** Humidity is High.
+* **Medium Water:** If Soil is Moist **AND** (Temp is Optimal **OR** Humidity is Optimal).
+* **Low Water:** If Soil is Wet **OR** Humidity is High **OR** Temp is Cold.
 
 
-* **Output:**
+**Output:**
 * **Duration (mins):** Calculated using the **Weighted Average** defuzzification method.
 
 
@@ -73,12 +73,3 @@ python fuzzy.py
 ```
 
 *(Note: Ensure your backend script is named `fuzzy.py`)*
-
-## Sample Output (CLI)
-
-```text
-Interval, Temp, Humid, Moist -> Low, Med, High -> Final Mins
-1, 32.5, 45.1, 20.0 -> 0.00, 0.25, 0.40 -> 48.5 mins
-2, 10.2, 88.0, 65.0 -> 0.80, 0.00, 0.00 -> 10.0 mins
-
-```
